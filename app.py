@@ -99,11 +99,19 @@ def build_animation(point):
                 showlegend=False
             ),
 
-            # HP
-            go.Surface(x=X, y=Y_rot, z=Z_rot, opacity=0.25, showscale=False),
+            # HP (rotating)
+            go.Surface(
+                x=X, y=Y_rot, z=Z_rot,
+                opacity=0.25,
+                showscale=False
+            ),
 
-            # VP
-            go.Surface(x=X, y=np.zeros_like(X), z=Y, opacity=0.25, showscale=False),
+            # VP (fixed)
+            go.Surface(
+                x=X, y=np.zeros_like(X), z=Y,
+                opacity=0.25,
+                showscale=False
+            ),
 
             # XY hinge
             go.Scatter3d(
@@ -120,7 +128,7 @@ def build_animation(point):
                 marker=dict(size=8),
                 text=["A''"],
                 textposition="top center",
-                textfont=dict(color="black", size=20),  # 🔥 BIG
+                textfont=dict(color="black", size=20),
                 showlegend=False
             ),
 
@@ -130,7 +138,7 @@ def build_animation(point):
                 marker=dict(size=8),
                 text=["A'"],
                 textposition="bottom center",
-                textfont=dict(color="black", size=20),  # 🔥 BIG
+                textfont=dict(color="black", size=20),
                 showlegend=False
             ),
 
@@ -147,23 +155,42 @@ def build_animation(point):
 
     # ---------------- LAYOUT ----------------
     fig.update_layout(
-        height=850,
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        font=dict(color="black"),
+        height=950,
 
+        paper_bgcolor="white",
+        plot_bgcolor="#E5ECF6",   # 🔵 2D light blue
+
+        font=dict(color="black"),
+        margin=dict(l=20, r=120, t=50, b=20),
+
+        # 🔵 3D light blue background
         scene=dict(
-            xaxis=dict(range=[-30, 30], backgroundcolor="white"),
-            yaxis=dict(range=[-30, 30], backgroundcolor="white"),
-            zaxis=dict(range=[-30, 30], backgroundcolor="white"),
+            xaxis=dict(
+                range=[-30, 30],
+                backgroundcolor="#E5ECF6",
+                gridcolor="white",
+                showbackground=True
+            ),
+            yaxis=dict(
+                range=[-30, 30],
+                backgroundcolor="#E5ECF6",
+                gridcolor="white",
+                showbackground=True
+            ),
+            zaxis=dict(
+                range=[-30, 30],
+                backgroundcolor="#E5ECF6",
+                gridcolor="white",
+                showbackground=True
+            ),
             aspectmode='cube'
         ),
 
-        # 2D grid styling
+        # 🔵 2D grid styling
         xaxis=dict(
             range=[-30, 30],
             showgrid=True,
-            gridcolor="lightgray",
+            gridcolor="white",
             tickfont=dict(color="black", size=14),
             zeroline=False
         ),
@@ -171,12 +198,12 @@ def build_animation(point):
             range=[-30, 30],
             scaleanchor="x",
             showgrid=True,
-            gridcolor="lightgray",
+            gridcolor="white",
             tickfont=dict(color="black", size=14),
             zeroline=False
         ),
 
-        # Play button near 3D
+        # Play button
         updatemenus=[dict(
             type="buttons",
             x=0.05,
