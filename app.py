@@ -155,7 +155,7 @@ def build_animation(point):
 
     # ---------------- LAYOUT ----------------
     fig.update_layout(
-        height=950,
+        height=800,
 
         paper_bgcolor="white",
         plot_bgcolor="#E5ECF6",   # 🔵 2D light blue
@@ -221,7 +221,7 @@ def build_animation(point):
 
 
 # ---------------- UI ----------------
-st.title("Monge Projection Visualizer")
+
 
 col1, col2, col3 = st.columns(3)
 
